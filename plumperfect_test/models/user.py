@@ -18,7 +18,8 @@ class User( BaseMixin, db.Model ):
     email               = db.Column( db.Unicode(256), nullable = False )
     password            = db.Column( db.Unicode(256), nullable = False )
 
-    user_product_colors = db.relationship( 'ProductColorUser' )
+    user_colors         = db.relationship( 'ColorUser' )
 
-    products            = association_proxy( 'user_product_colors', 'product' )
-    colors              = association_proxy( 'user_product_colors', 'color' )
+    products            = association_proxy( 'user_colors', 'product' )
+    brands              = association_proxy( 'products', 'brand' )
+    colors              = association_proxy( 'user_colors', 'color' )

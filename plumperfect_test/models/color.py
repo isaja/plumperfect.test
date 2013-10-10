@@ -12,6 +12,7 @@ class Color( BaseMixin, db.Model ):
     __tablename__   = 'color'
 
     id              = db.Column( db.Integer(), nullable = False, primary_key = True )
+    product_id      = db.Column( db.Integer(), db.ForeignKey( 'product.id' ), nullable = False, index = True )
     timestamp       = db.Column( db.DateTime(), nullable = False, default = datetime.now, onupdate = datetime.now )
 
     title           = db.Column( db.Unicode(256), nullable = False )
@@ -19,7 +20,22 @@ class Color( BaseMixin, db.Model ):
     rgb_g           = db.Column( db.Integer(), nullable = False, index = True )
     rgb_b           = db.Column( db.Integer(), nullable = False, index = True )
 
-    product_colors  = db.relationship( 'ProductColor' )
+    color_users     = db.relationship( 'ColorUser' )
 
-    products        = association_proxy( 'product_colors', 'product' )
-    users           = association_proxy( 'product_colors', 'users' )
+    product         = db.relationship( 'Product' )
+    brand           = association_proxy( 'product', 'brand' )
+    users           = association_proxy( 'color_users', 'user' )
+
+class ColorUser( BaseMixin, db.Model ):
+
+    '''A many-to-many relationship between product_color and user.'''
+
+    __tablename__       = 'color_user'
+
+    color_id            = db.Column( db.Integer(), db.ForeignKey( 'color.id' ), nullable = False, primary_key = True )
+    user_id             = db.Column( db.Integer(), db.ForeignKey( 'user.id' ), nullable = False, primary_key = True )
+    timestamp           = db.Column( db.DateTime(), nullable = False, default = datetime.now, onupdate = datetime.now )
+
+    product             = association_proxy( 'color', 'product' )
+    color               = db.relationship( 'Color' )
+    user                = db.relationship( 'User' )
