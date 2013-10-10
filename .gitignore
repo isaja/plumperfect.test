@@ -1,3 +1,7 @@
+env
+
+### Default github python gitignore
+
 *.py[cod]
 
 # C extensions
