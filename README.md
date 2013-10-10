@@ -24,11 +24,11 @@ Tasks
 
 While the project is entirely functional, there are some key bits lacking.  Please fork this repo and do one or more of the following on your fork:
 
-- [ ] Add authentication.  The post, put, patch, and delete methods should require authentication except for user.post.  Passwords should be hashed using [bcrypt](https://code.google.com/p/py-bcrypt/).
-- [ ] Add filtering based on `brand_ids`, `product_ids`, `color_ids`, and `user_ids` to the index methods.
-- [ ] Add views across relationships (e.g `/product/<id>/colors` ).
-- [ ] Add search.
-- [ ] Add fields at the ColorUser level (e.g `has`, `wants`, `hates`, `once_left_in_a_crowded_bar`, ...) and make them accessable to some APIs.
-- [ ] Add ProductType model in a many-to-many relationship with Product and associated views and controllers.
+- Add authentication.  The post, put, patch, and delete methods should require authentication except for user.post.  Passwords should be hashed using [bcrypt](https://code.google.com/p/py-bcrypt/).
+- Add filtering based on `brand_ids`, `product_ids`, `color_ids`, and `user_ids` to the index methods.
+- Add views across relationships (e.g `/product/<id>/colors` ).
+- Add search.
+- Add fields at the ColorUser level (e.g `has`, `wants`, `hates`, `once_left_in_a_crowded_bar`, ...) and make them accessable to some APIs.
+- Add ProductType model in a many-to-many relationship with Product and associated views and controllers.
 
 I would prefer to see work at the model-, controller-, and view-level, so that I can confirm you have some idea of best-practice in placing your methods.  You can also do anything you like within the code if you think it will better demonstrate what you can do.  Please try to stay stylistically consistent with this repo as this is the general style for the plumperfect.com code.
