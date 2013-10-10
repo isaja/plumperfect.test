@@ -26,7 +26,7 @@ While the project is entirely functional, there are some key bits lacking.  Plea
 
 - Add authentication.  The post, put, patch, and delete methods should require authentication except for user.post.  Passwords should be hashed using [bcrypt](https://code.google.com/p/py-bcrypt/).
 - Add filtering based on `brand_ids`, `product_ids`, `color_ids`, and `user_ids` to the index methods.
-- Add views across relationships (e.g `/product/<id>/colors` ).
+- Add views across relationships (e.g `/product/<id>/color` ).
 - Add search.
 - Add fields at the ColorUser level (e.g `has`, `wants`, `hates`, `once_left_in_a_crowded_bar`, ...) and make them accessable to some APIs.
 - Add ProductType model in a many-to-many relationship with Product and associated views and controllers.
