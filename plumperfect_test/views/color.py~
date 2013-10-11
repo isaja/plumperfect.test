@@ -15,11 +15,13 @@ class ColorView( RestView ):
     def get(self, id, category = None):
         if category == None:
 	    results = self.controller.get(id)
+	    id = int(id)
+	    #msg = "Color " + str(id)
 	elif category == 'product':
+	    #msg = msg + str(category)
 	    results = self.controller.filter_product(id)
 	elif category == 'color_users':
+	    #msg = msg + str(category)
 	    results = self.controller.filter_color_users(id)
-	else:
-	    results = []
 	return self._json( results )
 

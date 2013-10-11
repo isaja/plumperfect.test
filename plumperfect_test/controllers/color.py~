@@ -7,7 +7,7 @@ class ColorCtrl( RestCtrl ):
 
     Model = Color
 
-    def get(self, id):
+    def filter(self, id):
 	result = Model.query.get(id = id)
 	return result
 

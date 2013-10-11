@@ -84,11 +84,10 @@ class RestCtrl( BaseCtrl ):
 	''' return True if the authentication is successful'''
 	#return True
         result = User.query.filter_by(email = 'email').first()
-	if result != None:
-	    if result.password == bcrypt.hashpw('password', result.password):
-	        return True
-
-	return False
+	if result != None and 'hashed_password' == bcrypt.hashpw('secret', 'hashed_password'):
+	    return True
+	else:
+	    return False
 	
 
 

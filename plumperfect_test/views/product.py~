@@ -9,20 +9,26 @@ class ProductView( RestView ):
     route_base = 'product'
     Controller = ProductCtrl
 
+    def get2(self, id):
+	id = int(id)
+	msg = "Product " + str(id)
+	return msg
 
 
     @route('/<id>/')
     @route('/<id>/<category>')
     def get(self, id, category = None):
         if category == None:
-	    result = self.controller.get(id)
+	    self.controller.get(id)
+	    id = int(id)
+	    msg = "Welcome User " + str(id)
 	elif category == 'color':
-	    results = self.controller.filter_color(id)
+	    msg = msg + str(category)
+	    self.controller.filter_color(id)
 	elif category == 'brand':
-	    results = self.controller.filter_brand(id)
-	else:
-	    results = []
-	return self._json(results)
+	    msg = msg + str(category)
+	    self.controller.filter_brand(id)
+	return msg
 
 
 

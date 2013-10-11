@@ -1,14 +1,19 @@
-from plumperfect_test.controllers import ColorCtrl
+from plumperfect_test.controllers import BrandCtrl
 from .base import RestView
 from flask.ext.classy import route #added by me
 
-class ColorView( RestView ):
+class BrandView( RestView ):
 
-    '''The color view.'''
+    '''The brand view.'''
 
-    route_base = 'color'
-    Controller = ColorCtrl
+    route_base = 'brand'
+    Controller = BrandCtrl
 
+
+    def get(self, id):
+	id = int(id)
+	msg = "Brand " + str(id)
+	return msg
 
     @route('/<id>/')
     @route('/<id>/<category>')
@@ -17,9 +22,6 @@ class ColorView( RestView ):
 	    results = self.controller.get(id)
 	elif category == 'product':
 	    results = self.controller.filter_product(id)
-	elif category == 'color_users':
-	    results = self.controller.filter_color_users(id)
 	else:
 	    results = []
-	return self._json( results )
-
+	return self._json(results)

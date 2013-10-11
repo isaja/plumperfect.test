@@ -96,7 +96,7 @@ class RestView( BaseView ):
 
     def index(self):
 	print "yes2"
-	if self.controller.authenticate( *self.authentication_data):
+	if self.controller.authenticate(email,password):
             results = self.controller.index()
             return self._json( results ) 
 
@@ -115,7 +115,7 @@ class RestView( BaseView ):
 
 
     def post( self ):
-	if self.controller.authenticate( *self.authentication_data):
+	if self.controller.authenticate(email, password):
             results = self.controller.post( **self.request_data )
             return self._json( results )
 	else:
@@ -123,21 +123,21 @@ class RestView( BaseView ):
 
 
     def put( self, id ):
-	if self.controller.authenticate( *self.authentication_data):
+	if self.controller.authenticate(email, password):
             results = self.controller.put( id, **self.request_data )
             return self._json( results )
 	else:
 	    return "authentication required!"
 
     def patch( self, id ):
-	if self.controller.authenticate( *self.authentication_data):
+	if self.controller.authenticate(email, password):
             results = self.controller.patch( id, **self.request_data )
             return self._json( results )
 	else:
 	    return "authentication required!"
 
     def delete( self, id ):
-	if self.controller.authenticate( *self.authentication_data):
+	if self.controller.authenticate(email, password):
             results = self.controller.delete( id )
             return self._json( results )
 	else:
